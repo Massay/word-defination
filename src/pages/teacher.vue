@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Teacher</h1>
-        {{ wordsList }}
+        <!-- {{ wordsList }} -->
       </div>
       <div class="col-md-12">
         <form @submit.prevent="addToList">
@@ -13,7 +13,7 @@
               type="text"
               required
               name="word"
-              v-model="form.word"
+              v-model="word"
               placeholder="Word"
               class="form-control"
             />
@@ -23,7 +23,7 @@
             <label for="word">Defination</label>
             <textarea
               name=""
-              v-model="form.def"
+              v-model="def"
               class="form-control"
               id=""
               cols="30"
@@ -40,26 +40,33 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 export default {
-
-    computed:{
-            ...mapGetters({
-                 wordsList: 'wordStore/words'
-            })
-    },
+  computed: {
+    ...mapGetters({
+      wordsList: "wordStore/words",
+    }),
+  },
   data() {
     return {
-      form: {
-        word: "",
-        def: "",
-      },
+      word: "",
+      def: "",
+      id: null,
     };
   },
-  methods:{
-       addToList(){
-            this.$store.dispatch('wordStore/addWordDefination', this.form)
-       }
-  }
+  methods: {
+    addToList() {
+      //    this.form.id = this.uid;
+
+      let form = {
+        word: this.word,
+        def: this.def,
+        id: this.uid,
+      };
+      this.$store.dispatch("wordStore/addWordDefination", form);
+      this.word = ''
+       this.def = ''
+    },
+  },
 };
 </script>
