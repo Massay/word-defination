@@ -45,6 +45,7 @@
             </div>
           </b-tab>
           <b-tab title="Print List of Added Words">
+              <button class="btn btn-sm btn-primary float-right my-2">Print</button>
             <table class="table">
               <thead>
                 <tr>
