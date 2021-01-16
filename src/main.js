@@ -11,6 +11,12 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import UniqueId from 'vue-unique-id';
 
+import Print from 'vue-printjs'
+
+Vue.use(Print)
+
+
+
 Vue.use(UniqueId);
 
 

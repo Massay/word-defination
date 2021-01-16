@@ -45,8 +45,8 @@
             </div>
           </b-tab>
           <b-tab title="Print List of Added Words">
-              <button class="btn btn-sm btn-primary float-right my-2">Print</button>
-            <table class="table">
+              <button class="btn btn-sm btn-primary float-right my-2" @click="print">Print</button>
+            <table class="table" ref="print">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -86,6 +86,9 @@ export default {
     };
   },
   methods: {
+      print(){
+          this.$print(this.$refs.print)
+      },
     addToList() {
       if (this.word.length <= 0 || this.def.length <= 0) {
         alert("You must enter a word and a defination!");
